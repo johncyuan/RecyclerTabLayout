@@ -37,6 +37,7 @@ public class DemoImitationLoopPagerAdapter extends PagerAdapter {
         container.removeView((View) object);
     }
 
+
     @Override
     public int getCount() {
         return mItems.size() * NUMBER_OF_LOOPS;

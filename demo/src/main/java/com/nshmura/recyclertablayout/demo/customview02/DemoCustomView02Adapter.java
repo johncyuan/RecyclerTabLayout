@@ -3,6 +3,8 @@ package com.nshmura.recyclertablayout.demo.customview02;
 import com.nshmura.recyclertablayout.RecyclerTabLayout;
 import com.nshmura.recyclertablayout.demo.DemoImagePagerAdapter;
 import com.nshmura.recyclertablayout.demo.R;
+import com.nshmura.recyclertablayout.demo.imitationloop.DemoImitationLoopPagerAdapter;
+import com.nshmura.recyclertablayout.demo.imitationloop.ViewPagerAdapter;
 
 import android.content.Context;
 import android.content.res.ColorStateList;

@@ -7,12 +7,14 @@ import com.nshmura.recyclertablayout.demo.R;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DemoImitationLoopActivity extends AppCompatActivity
         implements ViewPager.OnPageChangeListener {
@@ -43,8 +45,7 @@ public class DemoImitationLoopActivity extends AppCompatActivity
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mItems = new ArrayList<>();
-        mItems.add(":)");
-        for (int i = 1; i <= 9; i++) {
+        for (int i = 1; i <= 4; i++) {
             mItems.add(String.valueOf(i));
         }
 
@@ -52,9 +53,17 @@ public class DemoImitationLoopActivity extends AppCompatActivity
         mAdapter.addAll(mItems);
 
         mViewPager = findViewById(R.id.view_pager);
-        mViewPager.setAdapter(mAdapter);
-        mViewPager.setCurrentItem(mAdapter.getCenterPosition(0));
+        //mViewPager.setAdapter(mAdapter);
+        //mViewPager.setCurrentItem(mAdapter.getCenterPosition(0));
+        List<Fragment> fragments = new ArrayList<>();
+        fragments.add(new TestFragment1());
+        fragments.add(new TestFragment2());
+        fragments.add(new TestFragment3());
+        fragments.add(new TestFragment4());
+        String[] title =new String[4];
+        mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), fragments, mItems.toArray(title)));
         mViewPager.addOnPageChangeListener(this);
+
 
         RecyclerTabLayout recyclerTabLayout = findViewById(R.id.recycler_tab_layout);
         recyclerTabLayout.setUpWithViewPager(mViewPager);
@@ -81,7 +90,7 @@ public class DemoImitationLoopActivity extends AppCompatActivity
         boolean nearLeftEdge = (position <= mItems.size());
         boolean nearRightEdge = (position >= mAdapter.getCount() - mItems.size());
         if (nearLeftEdge || nearRightEdge) {
-            mViewPager.setCurrentItem(mAdapter.getCenterPosition(0), false);
+            //mViewPager.setCurrentItem(mAdapter.getCenterPosition(0), false);
         }
     }
 
