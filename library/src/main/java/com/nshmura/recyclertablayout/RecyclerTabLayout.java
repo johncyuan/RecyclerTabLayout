@@ -249,12 +249,11 @@ public class RecyclerTabLayout extends RecyclerView {
         View nextView = mLinearLayoutManager.findViewByPosition(position + 1);
 
         if (selectedView != null) {
-            int width = getMeasuredWidth();
-            float sLeft = (position == 0) ? 0 : width / 2.f - selectedView.getMeasuredWidth() / 2.f; // left edge of selected tab
+            float sLeft = 0;
             float sRight = sLeft + selectedView.getMeasuredWidth(); // right edge of selected tab
 
             if (nextView != null) {
-                float nLeft = width / 2.f - nextView.getMeasuredWidth() / 2.f; // left edge of next tab
+                float nLeft =  0;
                 float distance = sRight - nLeft; // total distance that is needed to distance to next tab
                 float dx = distance * positionOffset;
                 scrollOffset = (int) (sLeft - dx);
